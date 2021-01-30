@@ -1,0 +1,11 @@
+getorders:
+  timeout: 30
+  memorySize: 128
+  handler: bin/order/get_orders/api
+  events:
+    - http:
+        path: getorders
+        method: post
+  package:
+    include:
+      - bin/order/get_orders/api

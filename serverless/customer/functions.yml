@@ -1,0 +1,11 @@
+getcustomers:
+  timeout: 30
+  memorySize: 128
+  handler: bin/customer/get_customers/api
+  events:
+    - http:
+        path: getcustomers
+        method: post
+  package:
+    include:
+      - bin/customer/get_customers/api
