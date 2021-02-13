@@ -34,7 +34,7 @@ func TestGetCustomers(t *testing.T) {
 				},
 			},
 			want: aws.Response{
-				StatusCode: 400,
+				StatusCode: 500,
 			},
 		},
 	}

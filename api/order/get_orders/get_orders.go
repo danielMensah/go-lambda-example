@@ -9,7 +9,7 @@ import (
 func GetOrders(req aws.Request) aws.Response {
 	var data request.GetOrdersRequest
 
-	if err := aws.Decode([]byte(req.Body), &data); err != nil {
+	if err := data.Decode([]byte(req.Body)); err != nil {
 		return aws.ErrorResponse(aws.BadRequestError.SetError(err), "decoding request data")
 	}
 

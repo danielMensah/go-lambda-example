@@ -9,7 +9,7 @@ import (
 func GetCustomers(req aws.Request) aws.Response {
 	var data request.GetCustomersRequest
 
-	if err := aws.Decode([]byte(req.Body), &data); err != nil {
+	if err := data.Decode([]byte(req.Body)); err != nil {
 		return aws.ErrorResponse(aws.InternalServerError.SetError(err), "decoding request")
 	}
 

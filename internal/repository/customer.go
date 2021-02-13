@@ -1,23 +1,19 @@
 package repository
 
 import (
-	"errors"
+	"fmt"
 	faker "github.com/brianvoe/gofakeit"
 )
 
-var GetCustomerError = errors.New("no store provided")
-
 type Customer struct {
-	Id string
-	Name string
+	Id    string
+	Name  string
 	Email string
 	Phone string
 }
 
 func (c Customer) GetCustomers(store string) ([]Customer, error) {
-	if store == "" {
-		return nil, GetCustomerError
-	}
+	fmt.Print(store)
 
 	customers := generateCustomers(5)
 
@@ -29,8 +25,8 @@ func generateCustomers(n int) []Customer {
 
 	for i := 0; i < n; i++ {
 		customers = append(customers, Customer{
-			Id: faker.UUID(),
-			Name: faker.Name(),
+			Id:    faker.UUID(),
+			Name:  faker.Name(),
 			Email: faker.Email(),
 			Phone: faker.Phone(),
 		})

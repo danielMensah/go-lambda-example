@@ -1,24 +1,17 @@
 package repository
 
 import (
-	"errors"
 	faker "github.com/brianvoe/gofakeit"
 )
 
-var GetOrdersError = errors.New("no customer id provided")
-
 type Order struct {
 	Id string
-	Name string
 	Email string
-	Phone string
+	Amount float64
+	Date string
 }
 
 func (o Order) GetOrders(customerId string) ([]Order, error) {
-	if customerId == "" {
-		return nil, GetOrdersError
-	}
-
 	orders := generateOrders(5)
 
 	return orders, nil
@@ -30,9 +23,9 @@ func generateOrders(n int) []Order {
 	for i := 0; i < n; i++ {
 		orders = append(orders, Order{
 			Id: faker.UUID(),
-			Name: faker.Name(),
 			Email: faker.Email(),
-			Phone: faker.Phone(),
+			Amount: faker.Price(1000, 10000),
+			Date: faker.Date().String(),
 		})
 	}
 
